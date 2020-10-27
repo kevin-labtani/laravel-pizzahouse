@@ -25,6 +25,8 @@ create project with `composer create-project --prefer-dist laravel/laravel pizza
 
 serve with `php artisan serve`
 
+run `php artisan` to get a list of every available `artisan` command
+
 ### Routes and Views
 
 routes are in the `/routes/web.php` file
@@ -36,7 +38,7 @@ you can pass data from our route handler to the view
 
 ### Blade
 
-blade syntax eg.:`{{ $type }}` escape any special characters like `htmlspecialchars()`
+blade syntax eg. :`{{ $type }}` escape any special characters like `htmlspecialchars()`
 
 if statement:
 
@@ -123,16 +125,36 @@ Route::get('/pizzas/{id}', function ($id) {
 
 ### Controllers
 
-Controllers are located in the `/app/Http/Controllers` folder.
-we run `php artisan make:controller PizzaController` in the console to make a new controller called PizzaController.
+controllers are located in the `/app/Http/Controllers` folder.
+we run `php artisan make:controller PizzaController` in the terminal to make a new controller called PizzaController.
 
 Functions in the controllers are called "actions".
 We reference the actions in the routes file the following way, `Route::get('/pizzas', 'PizzaController@index');`
 
 ### Connection to MySQL
 
-nb: we can alias the XAMPP mysql by adding the following to .zshrc: `alias mysql='/opt/lampp/bin/mysql -u root'`  
+nb: we can alias the XAMPP mysql by adding the following to .zshrc: `alias mysql='/opt/lampp/bin/mysql -u root'`
 
-create an empty db with phpmyadmin or the terminal by launching mysql and running `create database pizzahouse;` in MariaDB prompt.  
+create an empty db with phpmyadmin or the terminal by launching mysql and running `create database pizzahouse;` in MariaDB prompt.
 
-in the `.env` file, set our `DB_` keys to the appropriate values and restart the server  `php artisan serve`
+in the `.env` file, set our `DB_` keys to the appropriate values and restart the server `php artisan serve`
+
+### Migrations
+
+migrations allows us to programmatically from our code define the structure of a table in our database through migration files in `/database/migrations`
+
+in a migration file, the `up()` function is responsible for creating the table and defining its structure and the the `down()` function is responsible for rolling back the `up()` method
+
+to make a new table `pizzas` in our db, create a migration file in the terminal with `php artisan make:migration create_pizzas_table`, add in our own extra columns and then run the migration with `php artisan migrate`
+
+`php artisan migrate:status` will give us the status of our migrations
+
+`php artisan migrate:rollback` will rollback the latest migration we did
+
+`php artisan migrate:fresh` will drop all the tables in the db (created by a migraiton or not!) and will re-run al migrations
+
+`php artisan migrate:refresh` reset and re-run all migrations (by running the `down()` method in each migration files and then the `up()` method)
+
+to add a new column to our `pizzas` table, either modify the existing migration then rollback and migrate anew; or better, create a new migration `php artisan make:migration add_price_to_pizzas_table`
+
+### Eloquent Models
