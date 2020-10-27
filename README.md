@@ -86,3 +86,17 @@ foreach loop:
 ```
 
 within a loop we have access to `$loop->first`, `$loop->last`, `$loop->index`
+
+### Layout files
+
+use `@yield('content')` in the layout file where we want to inject our content and the following in the blade files extending our layout:
+
+```
+@extends('layouts.layout')
+
+@section('content')
+<div>
+...our actual content
+</div>
+@endsection
+```
