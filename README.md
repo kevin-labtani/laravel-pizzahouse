@@ -29,3 +29,9 @@ serve with `php artisan serve`
 
 routes are in the `/routes/web.php` file
 views are in the `/resources/views` folder
+
+### Passing data into views
+
+you can send data through the route to the view
+
+blade syntax eg.:`{{ $type }}` escape any special characters like `htmlspecialchars()`

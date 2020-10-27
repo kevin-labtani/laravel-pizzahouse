@@ -71,8 +71,9 @@
     <div class="flex-center position-ref full-height">
         <div class="content">
             <div class="title m-b-md">
-                Pizzas
+                Pizzas List
             </div>
+            <p>{{ $type }} - {{ $base }} - £{{ $price }}</p>
         </div>
     </div>
 </body>
