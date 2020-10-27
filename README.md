@@ -108,3 +108,15 @@ just put the files in the `/public` folder, then to link `/public/styles/main.cs
 ### Query Parameters
 
 we can access the query params "name" for the address `http://localhost:8000/pizzas?name=mario` in the controller for the "pizzas" route at `request('name')`
+
+### Route Parameters (wildcards)
+
+you can access the route parameter in the following url `http://localhost:8000/pizzas/1` by creating a specific route for it:
+
+```
+Route::get('/pizzas/{id}', function ($id) {
+    // use the $id to query the db for a record
+    return view('details', []);
+});
+
+```
