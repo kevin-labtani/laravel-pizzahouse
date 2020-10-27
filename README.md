@@ -100,3 +100,7 @@ use `@yield('content')` in the layout file where we want to inject our content a
 </div>
 @endsection
 ```
+
+### External images and css
+
+just put the files in the `/public` folder, then to link `/public/styles/main.css` in our layouts, just link to `/styles/main.css`
