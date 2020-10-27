@@ -15,20 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/pizzas', function () {
-    // mock getting data from a database
-    $pizzas = [
-        ['type' => 'hawaiian', 'base' => 'cheesy crust'],
-        ['type' => 'volcano', 'base' => 'garlic crust'],
-        ['type' => 'veg supreme', 'base' => 'thin & crispy'],
-    ];
+Route::get('/pizzas', 'PizzaController@index');
 
-    return view('pizzas', [
-        'pizzas' => $pizzas,
-    ]);
-});
-
-Route::get('/pizzas/{id}', function ($id) {
-    // use the $id to query the db for a record
-    return view('details', ['id' => $id]);
-});
+Route::get('/pizzas/{id}', 'PizzaController@show');

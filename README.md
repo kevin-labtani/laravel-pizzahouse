@@ -120,3 +120,11 @@ Route::get('/pizzas/{id}', function ($id) {
 });
 
 ```
+
+### Controllers
+
+Controllers are located in the `/app/Http/Controllers` folder.
+we run `php artisan make:controller PizzaController` in the console to make a new controller called PizzaController.
+
+Functions in the controllers are called "actions".
+We reference the actions in the routes file the following way, `Route::get('/pizzas', 'PizzaController@index');`
