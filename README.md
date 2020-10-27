@@ -32,6 +32,37 @@ views are in the `/resources/views` folder
 
 ### Passing data into views
 
-you can send data through the route to the view
+you can pass data from our route handler to the view
+
+### Blade
 
 blade syntax eg.:`{{ $type }}` escape any special characters like `htmlspecialchars()`
+
+if statement:
+
+```
+@if($price > 15)
+    <p>this pizza is expensive</p>
+@elseif($price < 5)
+    <p>this pizza is cheap</p>
+@else
+    <p>this pizza is normally priced</p>
+@endif
+```
+
+unless statement:
+
+```
+@unless($base === "cheesy crust")
+    <p>you don't have a cheesy crust</p>
+@endunless
+```
+
+php directive (to execute vanilla php in blade):
+
+```
+@php
+    $name = "shaun";
+    echo $name;
+@endphp
+```
