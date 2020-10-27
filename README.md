@@ -104,3 +104,7 @@ use `@yield('content')` in the layout file where we want to inject our content a
 ### External images and css
 
 just put the files in the `/public` folder, then to link `/public/styles/main.css` in our layouts, just link to `/styles/main.css`
+
+### Query Parameters
+
+we can access the query params "name" for the address `http://localhost:8000/pizzas?name=mario` in the controller for the "pizzas" route at `request('name')`
