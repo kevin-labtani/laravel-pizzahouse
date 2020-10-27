@@ -66,3 +66,23 @@ php directive (to execute vanilla php in blade):
     echo $name;
 @endphp
 ```
+
+for loop:
+
+```
+@for($i = 0; $i < count($pizzas); $i++)
+    <p> {{ $pizzas[$i]['type']  }} </p>
+@endfor
+```
+
+foreach loop:
+
+```
+@foreach($pizzas as $pizza)
+    <div>
+    {{ $loop->index }} {{ $pizza['type'] }} - {{ $pizza['base'] }}
+    </div>
+@endforeach
+```
+
+within a loop we have access to `$loop->first`, `$loop->last`, `$loop->index`
