@@ -128,3 +128,11 @@ we run `php artisan make:controller PizzaController` in the console to make a ne
 
 Functions in the controllers are called "actions".
 We reference the actions in the routes file the following way, `Route::get('/pizzas', 'PizzaController@index');`
+
+### Connection to MySQL
+
+nb: we can alias the XAMPP mysql by adding the following to .zshrc: `alias mysql='/opt/lampp/bin/mysql -u root'`  
+
+create an empty db with phpmyadmin or the terminal by launching mysql and running `create database pizzahouse;` in MariaDB prompt.  
+
+in the `.env` file, set our `DB_` keys to the appropriate values and restart the server  `php artisan serve`
