@@ -172,12 +172,13 @@ in our `PizzaController`, make use of our new model to grab the data in the DB a
 
 Pizza Model
 
-| Request | route          | controller & action    | view   |
-| :------ | :------------- | :--------------------- | :----- |
-| GET     | /pizzas        | PizzaController@index  | index  |
-| GET     | /pizzas/{id}   | PizzaController@show   | show   |
-| GET     | /pizzas/create | PizzaController@create | create |
-| POST    | /pizzas        | PizzaController@store  | ----   |
+| Request | route          | controller & action     | view   |
+| :------ | :------------- | :---------------------- | :----- |
+| GET     | /pizzas        | PizzaController@index   | index  |
+| GET     | /pizzas/{id}   | PizzaController@show    | show   |
+| GET     | /pizzas/create | PizzaController@create  | create |
+| POST    | /pizzas        | PizzaController@store   | ----   |
+| DELETE  | /pizzas/{id}   | PizzaController@destroy | ----   |
 
 ### Getting a Single Record
 
@@ -217,4 +218,26 @@ in order to transform the JSON into an array when we get the data back from the 
 protected $casts = [
     'toppings' => 'array'
 ];
+```
+
+### Deleting Records
+
+the route for the POST pizza action is `Route::delete('/pizzas/{id}', 'PizzaController@destroy');`, and we create the `destroy()` method in the `PizzaController`
+
+```php
+public function destroy($id)
+{
+    $pizza = Pizza::findOrFail($id);
+    $pizza->delete();
+}
+```
+
+we need blades directives in our `show` view where we have the delete button, so that laravel knows to look for the delete request handler:
+
+```php
+<form action="/pizzas/{{ $pizzas->id }}" method="POST">
+    @csrf
+    @method('DELETE')
+    <button>Complete Order</button>
+</form>
 ```
