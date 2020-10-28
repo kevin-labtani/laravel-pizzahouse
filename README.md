@@ -241,3 +241,10 @@ we need blades directives in our `show` view where we have the delete button, so
     <button>Complete Order</button>
 </form>
 ```
+
+### using SASS
+
+we'll need node; run `npm install` to install required packages.  
+in `webpack.mix.js` we have the startpoints for the resources that need compiling, we had a `main.scss`  
+use `npm run dev` to compile the sass into css  
+use `npm run watch` to autocompile the sass into css as we make changes
