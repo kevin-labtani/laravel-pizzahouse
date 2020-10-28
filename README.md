@@ -177,9 +177,13 @@ Pizza Model
 | GET     | /pizzas        | PizzaController@index  | index  |
 | GET     | /pizzas/{id}   | PizzaController@show   | show   |
 | GET     | /pizzas/create | PizzaController@create | create |
+| POST    | /pizzas        | PizzaController@store  | ----   |
 
 ### Getting a Single Record
 
 useing our model in the `PizzaController`, we can use `$pizza = Pizza::findorfail($id);` in the `show` function, findorfail will show the 404 page in case the \$id isn't found.
 
 ### POST Requests
+
+the route for the POST pizza action is `Route::post('/pizzas', 'PizzaController@store');`, and we create the `store()` method in the `PizzaController`  
+nb: we need to add the `@csrf` blade directive in the `create` view in order for the redirect action in the `store()` method to work
