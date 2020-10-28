@@ -21,7 +21,9 @@ class PizzaController extends Controller
     public function show($id)
     {
         // use the $id variable to query the db for a record
-        return view('pizzas.show', ['id' => $id]);
+        $pizza = Pizza::findorfail($id);
+
+        return view('pizzas.show', ['pizza' => $pizza]);
     }
 
     public function create()

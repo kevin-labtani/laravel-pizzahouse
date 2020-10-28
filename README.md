@@ -168,7 +168,7 @@ the model will automaticallt connect to the `pizzas` table based on its name; th
 in our `PizzaController`, make use of our new model to grab the data in the DB and send it to the view, `$pizzas = Pizza::all();` the `all()` method comes with the model  
 `$pizzas = Pizza::where('type', 'hawaiian')->get();`, `$pizzas = Pizza::orderBy('name', 'desc')->get();`, are alternative ways of fetching our db records. `$pizzas = Pizza::latest()->get()` will grab all records in created_at order
 
-## Naming Conventions
+### Naming Conventions
 
 Pizza Model
 
@@ -177,3 +177,9 @@ Pizza Model
 | GET     | /pizzas        | PizzaController@index  | index  |
 | GET     | /pizzas/{id}   | PizzaController@show   | show   |
 | GET     | /pizzas/create | PizzaController@create | create |
+
+### Getting a Single Record
+
+useing our model in the `PizzaController`, we can use `$pizza = Pizza::findorfail($id);` in the `show` function, findorfail will show the 404 page in case the \$id isn't found.
+
+### Creating
