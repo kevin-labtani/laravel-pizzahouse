@@ -187,3 +187,20 @@ useing our model in the `PizzaController`, we can use `$pizza = Pizza::findorfai
 
 the route for the POST pizza action is `Route::post('/pizzas', 'PizzaController@store');`, and we create the `store()` method in the `PizzaController`  
 nb: we need to add the `@csrf` blade directive in the `create` view in order for the redirect action in the `store()` method to work
+
+### Save Data to DB
+
+to save the data, create a new instance of the Pizza Model, set the properties and save that new Pizza.
+
+```php
+$pizza = new Pizza();
+
+$pizza->name = request('name');
+$pizza->type = request('type');
+$pizza->base = request('base');
+
+$pizza->save();
+
+```
+
+we can send a message on redirect with `return redirect('/')->with('msg', 'Thanks for your order!');`, this is session data, accessible in the view with `session('msg')`

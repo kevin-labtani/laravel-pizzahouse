@@ -33,10 +33,14 @@ class PizzaController extends Controller
 
     public function store()
     {
-        error_log(request('name'));
-        error_log(request('type'));
-        error_log(request('base'));
+        $pizza = new Pizza();
 
-        return redirect('/');
+        $pizza->name = request('name');
+        $pizza->type = request('type');
+        $pizza->base = request('base');
+
+        $pizza->save();
+
+        return redirect('/')->with('msg', 'Thanks for your order!');
     }
 }
