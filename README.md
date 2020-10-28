@@ -182,4 +182,4 @@ Pizza Model
 
 useing our model in the `PizzaController`, we can use `$pizza = Pizza::findorfail($id);` in the `show` function, findorfail will show the 404 page in case the \$id isn't found.
 
-### Creating
+### POST Requests
