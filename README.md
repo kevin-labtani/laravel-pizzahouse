@@ -204,3 +204,17 @@ $pizza->save();
 ```
 
 we can send a message on redirect with `return redirect('/')->with('msg', 'Thanks for your order!');`, this is session data, accessible in the view with `session('msg')`
+
+### Arrays & JSON
+
+we want to add a column _topping_ to the pizza table that'll we an array stored as a jSON string in our db.
+
+we create a migration to add the column, then adapt our `create` view to add inputs for toppings, nb. we name them all `name="toppings[]"` to tell laravel that toppings are an array
+
+in order to transform the JSON into an array when we get the data back from the db, in our `Pizza` model we add a cast property:
+
+```php
+protected $casts = [
+    'toppings' => 'array'
+];
+```
