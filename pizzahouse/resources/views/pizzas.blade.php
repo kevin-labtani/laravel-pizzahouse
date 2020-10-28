@@ -8,13 +8,7 @@
         </div>
         @foreach($pizzas as $pizza)
         <div>
-            {{ $loop->index +1 }} {{ $pizza['type'] }} - {{ $pizza['base'] }}
-            @if($loop->first)
-            <span>- first in loop -</span>
-            @endif
-            @if($loop->last)
-            <span>- last in loop -</span>
-            @endif
+            {{ $pizza->name }} - {{ $pizza->type }} - {{ $pizza->base }}
         </div>
         @endforeach
     </div>

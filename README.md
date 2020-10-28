@@ -152,9 +152,18 @@ to make a new table `pizzas` in our db, create a migration file in the terminal 
 `php artisan migrate:rollback` will rollback the latest migration we did
 
 `php artisan migrate:fresh` will drop all the tables in the db (created by a migraiton or not!) and will re-run al migrations
-
 `php artisan migrate:refresh` reset and re-run all migrations (by running the `down()` method in each migration files and then the `up()` method)
 
 to add a new column to our `pizzas` table, either modify the existing migration then rollback and migrate anew; or better, create a new migration `php artisan make:migration add_price_to_pizzas_table`
 
 ### Eloquent Models
+
+(we're manually inserting a few pizzas in our tables)
+
+Eloquent is Laravel's ORM
+
+create a model with `php artisan make:model Pizza`, it'll be added in the `app` folder root  
+the model will automaticallt connect to the `pizzas` table based on its name; this behavior could be overridden by adding a variable `protected $table = "some_name"` to the Pizza class
+
+in our `PizzaController`, make use of our new model to grab the data in the DB and send it to the view, `$pizzas = Pizza::all();` the `all()` method comes with the model  
+`$pizzas = Pizza::where('type', 'hawaiian')->get();`, `$pizzas = Pizza::orderBy('name', 'desc')->get();`, are alternative ways of fetching our db records. `$pizzas = Pizza::latest()->get()` will grab all records in created_at order
