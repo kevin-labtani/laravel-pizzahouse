@@ -242,9 +242,18 @@ we need blades directives in our `show` view where we have the delete button, so
 </form>
 ```
 
-### using SASS
+### Using SASS
 
 we'll need node; run `npm install` to install required packages.  
 in `webpack.mix.js` we have the startpoints for the resources that need compiling, we had a `main.scss`  
 use `npm run dev` to compile the sass into css  
 use `npm run watch` to autocompile the sass into css as we make changes
+
+### Auth setup
+
+we want to lock the pizzas and order details page behind a login system
+
+laravel comes with it's own auth system so alot of the back end is already setup for us, let's write the frontend! we'll install a ui package with `composer require laravel/ui`, well also use vue, run `php artisan ui vue --auth` to boilerplate a lot of the scaffolding for us
+
+we now have a lot of generated views in the `views/auth` folder as well as new auth routes in the `web.php` file and a `HomeController` that uses auth middleware for the new `/home` route  
+
