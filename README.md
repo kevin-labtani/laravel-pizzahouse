@@ -285,3 +285,9 @@ Auth::routes([
     'register' => false,
 ]);
 ```
+
+### Named Routes
+
+named routes apply a name to a route so that when we want to link to a route we use its name rather than the endpoint, this makes it easier to change the URI later, we won't have to go through all our views to update the URI, eg. `Route::get('/pizzas', 'PizzaController@index')->name('pizzas.index')->middleware('auth');`
+
+to pass a route parameter in the view, pass it as a second argument to the route function: `<form action="{{ route('pizzas.destroy', $pizza->id) }}" method="POST">`
