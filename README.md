@@ -291,3 +291,7 @@ Auth::routes([
 named routes apply a name to a route so that when we want to link to a route we use its name rather than the endpoint, this makes it easier to change the URI later, we won't have to go through all our views to update the URI, eg. `Route::get('/pizzas', 'PizzaController@index')->name('pizzas.index')->middleware('auth');`
 
 to pass a route parameter in the view, pass it as a second argument to the route function: `<form action="{{ route('pizzas.destroy', $pizza->id) }}" method="POST">`
+
+### File Generation Shortcut
+
+say we wanted to add kebabs, we'd need to create a Model `Kebab`, a Migration `create_kebabs_table` and a Controller `KebabController`; we will still have to manually create the Routes and the Views, but there's a shortcut to create the Model, Controller and Migration in one go: `php artisan make:model Kebab -mc`
